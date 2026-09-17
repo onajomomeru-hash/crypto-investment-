@@ -439,3 +439,32 @@ document.addEventListener('click', async e => {
     if (el.dataset.del) {
       if (!confirm('Delete ' + el.dataset.del + ' for this user?')) return;
       await api('/api/admin/trade/
+' + el.dataset.uid + '/' + el.dataset.del, {method:'DELETE'});
+      await loadAdminUser(el.dataset.uid);
+      await loadAdmin();
+    }
+    await loadAdmin();
+  } catch (err) { alert(err.message); }
+});
+
+/* boot */
+(async () => {
+  if (!localStorage.getItem('ci_token') && !document.querySelector('#day').value)
+    document.querySelector('#day').value = new Date().toISOString().slice(0,10);
+  if (token) {
+    try {
+      await refreshMe();
+      await loadSummary();
+      showUser();
+      if (me.is_admin) loadAdmin();
+    } catch {
+      token = ''; me = null; localStorage.removeItem('ci_token');
+      showLanding();
+    }
+  } else {
+    showLanding();
+  }
+})();
+</script>
+</body>
+</html>
