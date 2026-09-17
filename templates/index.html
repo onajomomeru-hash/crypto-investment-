@@ -1,499 +1,147 @@
 <!doctype html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Crypto Investment — AI Trading Portfolio</title>
+<html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Crypto Investment</title>
 <style>
-:root{--bg:#080b12;--card:#111827;--card2:#0c1320;--line:#1e293b;--txt:#e6edf7;
---mut:#8494ab;--grn:#16c784;--red:#ea3943;--acc:#4f7cff}
-*{box-sizing:border-box}
-body{margin:0;color:var(--txt);min-height:100vh;font:15px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
-background:radial-gradient(1200px 600px at 50% -250px,#152241 0%,var(--bg) 65%)}
-header{position:sticky;top:0;z-index:9;background:rgba(8,11,18,.75);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
-.hwrap{max-width:1020px;margin:0 auto;padding:12px 18px;display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
-.brand{font-weight:700;white-space:nowrap}
-.badge{font-size:9px;background:#0d2a1f;color:#3ddc97;border:1px solid #1c4a38;padding:2px 7px;border-radius:99px;vertical-align:middle;margin-left:6px}
-main{max-width:1020px;margin:0 auto;padding:18px 18px 70px;display:grid;gap:16px}
-.card{background:linear-gradient(180deg,var(--card),var(--card2));border:1px solid var(--line);border-radius:16px;padding:18px}
-.bal{font-size:42px;font-weight:700;letter-spacing:-1px;margin:6px 0 16px}
-.lbl{font-size:11px;text-transform:uppercase;letter-spacing:.9px;color:var(--mut)}
-.big{font-size:18px;font-weight:600}
-.sub{font-size:12px;color:var(--mut)}
-.row{display:flex;gap:26px;flex-wrap:wrap}
-.grid2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
-@media(max-width:760px){.grid2{grid-template-columns:1fr}.bal{font-size:34px}}
-h3{margin:0 0 14px;font-size:14px;color:#b9c6da;font-weight:600;letter-spacing:.3px}
-label{display:block;font-size:12px;color:var(--mut);margin:10px 0 5px}
-input,select{width:100%;background:#0b1220;border:1px solid var(--line);color:var(--txt);
-padding:10px 12px;border-radius:10px;font:inherit;outline:none}
-input:focus,select:focus{border-color:var(--acc)}
-button{cursor:pointer;font:inherit;font-weight:600;border:0;border-radius:10px;padding:11px 16px;background:var(--acc);color:#fff}
-button:active{transform:translateY(1px)}
-button.ghost{background:transparent;border:1px solid var(--line);color:var(--txt);padding:8px 13px}
-button.sm{padding:5px 10px;font-size:12px;border-radius:8px}
-button.ok{background:#164f3a;color:#3ddc97}
-button.no{background:#4d1f26;color:#ff8b93}
-button.danger{background:#3a1418;color:#ff8b93;border:1px solid #5a2029}
-table{width:100%;border-collapse:collapse;font-size:13.5px}
-th{text-align:left;font-size:11px;text-transform:uppercase;letter-spacing:.7px;color:var(--mut);
-padding:8px 6px;border-bottom:1px solid var(--line);white-space:nowrap}
-td{padding:10px 6px;border-bottom:1px solid #18202e;white-space:nowrap}
-tr:last-child td{border-bottom:0}
-.scroll{overflow-x:auto}
-.hidden{display:none!important}
-.msg{margin-top:10px;font-size:13px;color:var(--mut);min-height:18px}
-.up{color:var(--grn)}.down{color:var(--red)}.flat{color:var(--mut)}
-.pill{font-size:11px;padding:2px 8px;border-radius:99px;border:1px solid var(--line)}
-.pending{color:#ffc46b;border-color:#5a4318;background:#2a1f0a}
-.approved{color:#3ddc97;border-color:#1c4a38;background:#0d2a1f}
-.rejected{color:#ff8b93;border-color:#5a2029;background:#2a0f13}
-.note{font-size:12px;color:var(--mut);border-left:2px solid var(--line);padding-left:10px;margin-top:14px}
-.hero-title{font-size:32px;font-weight:700;letter-spacing:-.5px;margin:0 0 8px}
-@media(max-width:600px){.hero-title{font-size:26px}}
-</style>
-</head>
-<body>
+*{box-sizing:border-box}body{margin:0;font:15px/1.5 system-ui,sans-serif;background:#0b1020;color:#e8eef8;padding:0}
+.wrap{max-width:800px;margin:0 auto;padding:20px}
+.card{background:#141b30;border:1px solid #253050;border-radius:14px;padding:18px;margin-bottom:16px}
+h1{font-size:26px;margin:0 0 12px}h3{font-size:14px;color:#a5b4cf;margin:0 0 10px;text-transform:uppercase;letter-spacing:1px}
+input,select{width:100%;padding:11px;background:#0a1122;border:1px solid #253050;border-radius:9px;color:#fff;font:inherit;margin-bottom:10px}
+button{padding:11px 18px;border:0;border-radius:9px;background:#4f7cff;color:#fff;font:inherit;font-weight:600;cursor:pointer;margin-right:6px}
+button.gray{background:#253050}
+button.sm{padding:5px 10px;font-size:12px;margin:0 2px}
+button.ok{background:#1a5c3f;color:#5ef0a5}button.no{background:#5c1a24;color:#ff9090}
+.bal{font-size:36px;font-weight:700;margin:8px 0}
+.lbl{font-size:11px;color:#8494ab;text-transform:uppercase;letter-spacing:1px}
+.row{display:flex;gap:20px;flex-wrap:wrap}.stat{font-size:18px;font-weight:600}
+.up{color:#16c784}.down{color:#ea3943}.mut{color:#8494ab}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th{text-align:left;padding:6px;color:#8494ab;font-size:11px;text-transform:uppercase;border-bottom:1px solid #253050}
+td{padding:8px 6px;border-bottom:1px solid #1c2540}
+.msg{font-size:13px;color:#8494ab;margin-top:8px;min-height:18px}
+.hide{display:none}
+.pill{font-size:11px;padding:2px 8px;border-radius:99px;background:#2a1f0a;color:#ffc46b}
+</style></head><body><div class="wrap">
 
-<header><div class="hwrap">
-  <div class="brand">₿ Crypto Investment <span class="badge">LIVE</span></div>
-  <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
-    <span class="sub" id="whoami"></span>
-    <button class="ghost hidden" id="adminBtn">Admin</button>
-    <button class="ghost hidden" id="logoutBtn">Sign out</button>
-  </div>
-</div></header>
+<div class="card"><h1>₿ Crypto Investment</h1>
+<div class="lbl">Signed in as</div><div id="who" style="margin-bottom:10px">—</div>
+<button id="lo" class="gray hide">Sign out</button>
+<button id="ad" class="gray hide">Admin</button>
+</div>
 
-<main>
+<div id="land" class="card">
+<h3>Sign in or create account</h3>
+<input id="em" placeholder="Email" type="email">
+<input id="pw" placeholder="Password (min 8 chars)" type="password">
+<button id="si">Sign in</button>
+<button id="su" class="gray">Create account</button>
+<div class="msg" id="authmsg"></div>
+</div>
 
-  <!-- ============ LANDING (not logged in) ============ -->
-  <section id="landingView">
-    <div class="card">
-      <div class="hero-title">AI-powered crypto trading, on your behalf.</div>
-      <p class="sub" style="margin:0 0 18px;font-size:14px">
-        Each account has its own private portfolio, managed individually. Sign in to see your balance,
-        daily P/L, and history — or create an account to get started.
-      </p>
-      <div class="grid2">
-        <div>
-          <h3 id="authTitle">Sign in</h3>
-          <label>Email</label><input id="email" type="email" autocomplete="email" placeholder="you@example.com">
-          <label>Password</label><input id="password" type="password" placeholder="At least 8 characters">
-          <div style="margin-top:14px">
-            <button id="authSubmit">Sign in</button>
-            <button class="ghost" id="authToggle">Create account</button>
-          </div>
-          <div class="msg" id="authMsg"></div>
-        </div>
-        <div class="sub" style="font-size:13px">
-          <div style="margin-bottom:8px"><b style="color:#b9c6da">How it works</b></div>
-          <ul style="padding-left:18px;margin:0">
-            <li>Sign up — an account is created for you</li>
-            <li>The operator trades your portfolio daily</li>
-            <li>Results are published each day — see your balance grow</li>
-            <li>Deposit or request a withdrawal anytime</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-    <div class="card">
-      <div class="note">Trading involves substantial risk. Past performance does not guarantee future results.</div>
-    </div>
-  </section>
+<div id="user" class="hide">
+<div class="card"><div class="lbl">My Portfolio Balance</div><div class="bal" id="bal">$0.00</div>
+<div class="row">
+<div><div class="lbl">Latest P/L</div><div class="stat mut" id="lastp">—</div><div class="lbl" id="lastd"></div></div>
+<div><div class="lbl">Total P/L</div><div class="stat mut" id="totp">—</div></div>
+<div><div class="lbl">Win rate</div><div class="stat" id="wr">—</div></div>
+<div><div class="lbl">Days</div><div class="stat" id="dc">0</div></div>
+</div></div>
 
-  <!-- ============ USER DASHBOARD ============ -->
-  <section id="userView" class="hidden">
-    <div class="card">
-      <div class="lbl">My Portfolio Balance</div>
-      <div class="bal" id="balance">$0.00</div>
-      <div class="row">
-        <div><div class="lbl">Latest Day P/L</div><div class="big flat" id="lastPnl">—</div><div class="sub" id="lastDay"></div></div>
-        <div><div class="lbl">Total P/L</div><div class="big flat" id="totalPnl">—</div><div class="sub" id="dayCount">0 days</div></div>
-        <div><div class="lbl">Win Rate</div><div class="big" id="winRate">—</div><div class="sub">profitable days</div></div>
-        <div><div class="lbl">Last Update</div><div class="big" id="lastUpd">—</div></div>
-      </div>
-      <div class="row" style="margin-top:18px;padding-top:16px;border-top:1px solid var(--line)">
-        <div><div class="lbl">Money In</div><div class="big" id="deposited">$0.00</div><div class="sub">approved deposits</div></div>
-        <div><div class="lbl">Money Out</div><div class="big" id="withdrawn">$0.00</div><div class="sub">approved withdrawals</div></div>
-        <div><div class="lbl">Net Invested</div><div class="big" id="netIn">$0.00</div><div class="sub">in − out</div></div>
-      </div>
-    </div>
+<div class="card"><h3>Deposit / Withdraw</h3>
+<select id="k"><option value="deposit">Deposit</option><option value="withdraw">Withdraw</option></select>
+<input id="am" type="number" placeholder="Amount (USD)" min="10" step="0.01">
+<input id="adr" placeholder="Wallet address (withdrawals only)">
+<button id="sr">Submit request</button>
+<div class="msg" id="reqmsg"></div>
+<div id="myr" class="mut" style="margin-top:14px">No requests yet.</div>
+</div>
 
-    <div class="card">
-      <h3>Deposit / Withdraw</h3>
-      <div class="grid2">
-        <div>
-          <label>Type</label>
-          <select id="kind"><option value="deposit">Deposit</option><option value="withdraw">Withdraw</option></select>
-          <label>Amount (USD)</label><input id="amount" type="number" min="10" step="0.01" placeholder="100.00">
-          <label>Wallet address <span class="sub">(required for withdrawals)</span></label>
-          <input id="address" placeholder="USDT TRC20 / BTC / ETH ...">
-          <div style="margin-top:14px"><button id="reqBtn">Submit request</button></div>
-          <div class="msg" id="reqMsg"></div>
-        </div>
-        <div>
-          <div class="lbl" style="margin-bottom:8px">My requests</div>
-          <div id="myReqs" class="sub">No requests yet.</div>
-        </div>
-      </div>
-    </div>
+<div class="card"><h3>My Daily Performance</h3>
+<div style="overflow-x:auto"><table><thead><tr><th>Date</th><th>Start</th><th>End</th><th>P/L</th><th>Note</th></tr></thead>
+<tbody id="hist"><tr><td colspan="5" class="mut">No sessions yet.</td></tr></tbody></table></div>
+</div>
+</div>
 
-    <div class="card">
-      <h3>My Daily Performance</h3>
-      <div class="scroll"><table>
-        <thead><tr><th>Date</th><th>Start</th><th>End</th><th>P/L</th><th>Note</th></tr></thead>
-        <tbody id="histBody"><tr><td colspan="5" class="sub">No sessions yet.</td></tr></tbody>
-      </table></div>
-    </div>
-  </section>
+<div id="admin" class="hide">
+<div class="card"><h3>Post daily result for a user</h3>
+<select id="auser"><option value="">— select a user —</option></select>
+<div id="apanel" class="hide" style="margin-top:14px">
+<div class="lbl">Their current balance</div><div class="bal" id="abal" style="font-size:26px">$0.00</div>
+<input id="dday" type="date"><input id="db" type="number" step="0.01" placeholder="Closing balance">
+<input id="dp" type="number" step="0.01" placeholder="P/L today (minus for loss)">
+<input id="dn" placeholder="Note (optional)">
+<button id="post">Publish</button>
+<div class="msg" id="pmsg"></div>
+</div></div>
 
-  <!-- ============ ADMIN PANEL ============ -->
-  <section id="adminView" class="card hidden">
-    <h3>Admin Console</h3>
+<div class="card"><h3>Pending requests</h3><div id="areqs" class="mut">—</div></div>
+<div class="card"><h3>All users</h3><div id="ausers" class="mut">—</div></div>
+</div>
 
-    <div>
-      <div class="lbl" style="margin-bottom:8px">Manage portfolio for:</div>
-      <select id="adminUserSelect"><option value="">— select a user —</option></select>
-    </div>
-
-    <div id="adminUserPanel" class="hidden" style="margin-top:16px">
-      <div class="grid2">
-        <div>
-          <div class="card" style="background:#0a1220;margin-bottom:14px">
-            <div class="sub" id="adminUserEmail"></div>
-            <div class="bal" style="font-size:26px;margin:4px 0 0" id="adminUserBal">$0.00</div>
-            <div class="sub" id="adminUserMeta"></div>
-          </div>
-
-          <h3>Post daily result</h3>
-          <label>Date</label><input id="day" type="date">
-          <label>Closing balance (USD)</label><input id="endBal" type="number" step="0.01" placeholder="1050.00">
-          <label>P/L for the day (minus for a loss)</label><input id="pnl" type="number" step="0.01" placeholder="12.50">
-          <label>Note</label><input id="note" placeholder="BTC scalp ×3">
-          <div style="margin-top:14px"><button id="postBtn">Publish for this user</button></div>
-          <div class="msg" id="postMsg"></div>
-        </div>
-
-        <div>
-          <div class="lbl" style="margin-bottom:8px">Their history</div>
-          <div class="scroll" style="max-height:400px">
-            <table>
-              <thead><tr><th>Date</th><th>End</th><th>P/L</th><th></th></tr></thead>
-              <tbody id="adminUserHist"><tr><td colspan="4" class="sub">No entries.</td></tr></tbody>
-            </table>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div style="margin-top:22px">
-      <div class="lbl" style="margin-bottom:8px">Pending requests (all users)</div>
-      <div id="adminReqs" class="sub">—</div>
-    </div>
-
-    <div style="margin-top:22px">
-      <div class="lbl" style="margin-bottom:8px">All users</div>
-      <div id="adminUsers" class="sub">—</div>
-    </div>
-  </section>
-
-  <div class="card hidden" id="footerNote">
-    <div class="note">Trading involves substantial risk. Past performance does not guarantee future results.
-    This site does not custody funds.</div>
-  </div>
-
-</main>
+</div>
 
 <script>
-const $ = s => document.querySelector(s);
-let token = localStorage.getItem('ci_token') || '';
-let me = null;
-let signupMode = false;
-let selectedUserId = null;
+var T=localStorage.getItem('tok')||'',ME=null,UID=null;
+function $(s){return document.querySelector(s)}
+function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
+function money(n){return '$'+Number(n).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2})}
+function sign(n){return (n>0?'+':n<0?'-':'')+'$'+Math.abs(Number(n)).toFixed(2)}
+function cls(n){return n>0?'up':n<0?'down':'mut'}
+function api(p,o){o=o||{};o.headers=o.headers||{};o.headers['Content-Type']='application/json';if(T)o.headers['X-Token']=T;
+return fetch(p,o).then(function(r){return r.json().catch(function(){return{}}).then(function(d){if(!r.ok)throw new Error(d.error||'HTTP '+r.status);return d})})}
 
-const money = n => '$' + Number(n).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});
-const signed = n => (n > 0 ? '+' : n < 0 ? '-' : '') + '$' + Math.abs(Number(n)).toFixed(2);
-const cls = n => n > 0 ? 'up' : n < 0 ? 'down' : 'flat';
-const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+function showLanding(){$('#land').classList.remove('hide');$('#user').classList.add('hide');$('#admin').classList.add('hide');$('#lo').classList.add('hide');$('#ad').classList.add('hide');$('#who').textContent='—'}
+function showUser(){$('#land').classList.add('hide');$('#user').classList.remove('hide');$('#lo').classList.remove('hide');$('#who').textContent=ME.email;$('#ad').classList.toggle('hide',!ME.is_admin)}
 
-async function api(path, opts = {}) {
-  opts.headers = Object.assign({'Content-Type':'application/json'}, opts.headers || {});
-  if (token) opts.headers['X-Token'] = token;
-  const r = await fetch(path, opts);
-  let d = {};
-  try { d = await r.json(); } catch (e) {}
-  if (!r.ok) throw new Error(d.error || ('HTTP ' + r.status));
-  return d;
-}
+function loadSummary(){api('/api/summary').then(function(d){
+$('#bal').textContent=money(d.balance);
+$('#totp').textContent=sign(d.total_pnl);$('#totp').className='stat '+cls(d.total_pnl);
+$('#dc').textContent=d.days;$('#wr').textContent=d.days?Math.round(d.wins/d.days*100)+'%':'—';
+var last=d.history[0];if(last){$('#lastp').textContent=sign(last.pnl);$('#lastp').className='stat '+cls(last.pnl);$('#lastd').textContent=last.day}else{$('#lastp').textContent='—';$('#lastp').className='stat mut'}
+$('#hist').innerHTML=d.history.length?d.history.map(function(h){return '<tr><td>'+esc(h.day)+'</td><td>'+money(h.start_balance)+'</td><td>'+money(h.end_balance)+'</td><td class="'+cls(h.pnl)+'">'+sign(h.pnl)+'</td><td class="mut">'+esc(h.note)+'</td></tr>'}).join(''):'<tr><td colspan="5" class="mut">No sessions yet.</td></tr>'})}
 
-/* ---------------- views ---------------- */
-function showLanding() {
-  $('#landingView').classList.remove('hidden');
-  $('#userView').classList.add('hidden');
-  $('#adminView').classList.add('hidden');
-  $('#footerNote').classList.remove('hidden');
-  $('#adminBtn').classList.add('hidden');
-  $('#logoutBtn').classList.add('hidden');
-  $('#whoami').textContent = '';
-}
+function loadMe(){return api('/api/me').then(function(d){ME=d;var r=d.requests||[];
+$('#myr').innerHTML=r.length?'<table><thead><tr><th>#</th><th>Type</th><th>Amount</th><th>Status</th></tr></thead><tbody>'+r.map(function(q){return '<tr><td>'+q.id+'</td><td>'+esc(q.kind)+'</td><td>'+money(q.amount)+'</td><td><span class="pill">'+esc(q.status)+'</span></td></tr>'}).join('')+'</tbody></table>':'No requests yet.'})}
 
-function showUser() {
-  $('#landingView').classList.add('hidden');
-  $('#userView').classList.remove('hidden');
-  $('#footerNote').classList.remove('hidden');
-  $('#logoutBtn').classList.remove('hidden');
-  $('#whoami').textContent = me.email;
-  $('#adminBtn').classList.toggle('hidden', !me.is_admin);
-}
+$('#si').onclick=function(){var m=$('#authmsg');m.textContent='';
+api('/api/login',{method:'POST',body:JSON.stringify({email:$('#em').value.trim(),password:$('#pw').value})})
+.then(function(d){T=d.token;localStorage.setItem('tok',T);ME={email:d.email,is_admin:d.is_admin};$('#pw').value='';
+return loadMe()}).then(function(){return loadSummary()}).then(function(){showUser();if(ME.is_admin)loadAdmin()})
+.catch(function(e){m.textContent='❌ '+e.message})};
 
-/* ---------------- data ---------------- */
-async function loadSummary() {
-  const d = await api('/api/summary');
-  $('#balance').textContent = money(d.balance);
-  $('#totalPnl').textContent = signed(d.total_pnl);
-  $('#totalPnl').className = 'big ' + cls(d.total_pnl);
-  $('#dayCount').textContent = d.days + (d.days === 1 ? ' day' : ' days');
-  $('#winRate').textContent = d.days ? Math.round(d.wins / d.days * 100) + '%' : '—';
-  $('#deposited').textContent = money(d.deposited);
-  $('#withdrawn').textContent = money(d.withdrawn);
-  $('#netIn').textContent = money(d.deposited - d.withdrawn);
+$('#su').onclick=function(){var m=$('#authmsg');m.textContent='';
+api('/api/signup',{method:'POST',body:JSON.stringify({email:$('#em').value.trim(),password:$('#pw').value})})
+.then(function(d){T=d.token;localStorage.setItem('tok',T);ME={email:d.email,is_admin:d.is_admin};$('#pw').value='';
+return loadMe()}).then(function(){return loadSummary()}).then(function(){showUser()})
+.catch(function(e){m.textContent='❌ '+e.message})};
 
-  const last = d.history[0];
-  if (last) {
-    $('#lastPnl').textContent = signed(last.pnl);
-    $('#lastPnl').className = 'big ' + cls(last.pnl);
-    $('#lastDay').textContent = last.day;
-    $('#lastUpd').textContent = last.day;
-  } else {
-    $('#lastPnl').textContent = '—';
-    $('#lastPnl').className = 'big flat';
-    $('#lastDay').textContent = '';
-    $('#lastUpd').textContent = '—';
-  }
+$('#lo').onclick=function(){api('/api/logout',{method:'POST'}).catch(function(){}).then(function(){T='';ME=null;localStorage.removeItem('tok');showLanding()})};
 
-  $('#histBody').innerHTML = d.history.length
-    ? d.history.map(h => `<tr>
-        <td>${esc(h.day)}</td><td>${money(h.start_balance)}</td>
-        <td>${money(h.end_balance)}</td>
-        <td class="${cls(h.pnl)}">${signed(h.pnl)}</td>
-        <td class="sub">${esc(h.note)}</td></tr>`).join('')
-    : '<tr><td colspan="5" class="sub">No sessions published yet.</td></tr>';
-}
+$('#sr').onclick=function(){var m=$('#reqmsg');m.textContent='';
+api('/api/request',{method:'POST',body:JSON.stringify({kind:$('#k').value,amount:parseFloat($('#am').value),address:$('#adr').value.trim()})})
+.then(function(d){m.textContent='✅ Request #'+d.id+' submitted.';$('#am').value='';$('#adr').value='';loadMe()})
+.catch(function(e){m.textContent='❌ '+e.message})};
 
-function renderMyRequests(list) {
-  $('#myReqs').innerHTML = list.length
-    ? `<div class="scroll"><table><thead><tr><th>#</th><th>Type</th><th>Amount</th><th>Status</th></tr></thead>
-       <tbody>${list.map(r => `<tr><td>${r.id}</td><td>${esc(r.kind)}</td>
-         <td>${money(r.amount)}</td>
-         <td><span class="pill ${r.status}">${r.status}</span></td></tr>`).join('')}</tbody></table></div>`
-    : 'No requests yet.';
-}
+$('#ad').onclick=function(){var a=$('#admin');a.classList.toggle('hide');if(!a.classList.contains('hide')){loadAdmin();a.scrollIntoView({behavior:'smooth'})}};
 
-async function refreshMe() {
-  me = await api('/api/me');
-  renderMyRequests(me.requests);
-}
+function loadAdmin(){api('/api/admin/users').then(function(d){
+$('#auser').innerHTML='<option value="">— select a user —</option>'+d.users.map(function(u){return '<option value="'+u.id+'">'+esc(u.email)+' — '+money(u.balance)+'</option>'}).join('');
+$('#ausers').innerHTML='<table><thead><tr><th>#</th><th>Email</th><th>Balance</th><th>Days</th></tr></thead><tbody>'+d.users.map(function(u){return '<tr><td>'+u.id+'</td><td>'+esc(u.email)+'</td><td>'+money(u.balance)+'</td><td>'+u.days+'</td></tr>'}).join('')+'</tbody></table>';
+return api('/api/admin/requests')}).then(function(r){
+var p=r.pending,r2=r.recent;
+var html=p.length?'<table><thead><tr><th>#</th><th>User</th><th>Type</th><th>Amount</th><th>Address</th><th></th></tr></thead><tbody>'+p.map(function(q){return '<tr><td>'+q.id+'</td><td>'+esc(q.email)+'</td><td>'+esc(q.kind)+'</td><td>'+money(q.amount)+'</td><td class="mut">'+esc(q.address||'—')+'</td><td><button class="sm ok" onclick="dec('+q.id+',\'approved\')">✓</button><button class="sm no" onclick="dec('+q.id+',\'rejected\')">✕</button></td></tr>'}).join('')+'</tbody></table>':'Nothing pending.';
+$('#areqs').innerHTML=html}).catch(function(e){$('#areqs').innerHTML='<span class="mut">'+esc(e.message)+'</span>'})}
 
-/* ---------------- auth ---------------- */
-$('#authToggle').onclick = () => {
-  signupMode = !signupMode;
-  $('#authTitle').textContent = signupMode ? 'Create account' : 'Sign in';
-  $('#authSubmit').textContent = signupMode ? 'Create account' : 'Sign in';
-  $('#authToggle').textContent = signupMode ? 'I already have an account' : 'Create account';
-  $('#authMsg').textContent = '';
-};
+window.dec=function(id,st){api('/api/admin/decide',{method:'POST',body:JSON.stringify({id:id,status:st})}).then(loadAdmin)};
 
-$('#authSubmit').onclick = async () => {
-  const email = $('#email').value.trim();
-  const password = $('#password').value;
-  const msg = $('#authMsg');
-  msg.textContent = '';
-  try {
-    const d = await api(signupMode ? '/api/signup' : '/api/login',
-      {method:'POST', body: JSON.stringify({email, password})});
-    token = d.token;
-    localStorage.setItem('ci_token', token);
-    me = {email: d.email, is_admin: d.is_admin, requests: []};
-    $('#password').value = '';
-    await refreshMe();
-    await loadSummary();
-    showUser();
-    if (me.is_admin) loadAdmin();
-  } catch (e) { msg.textContent = '❌ ' + e.message; }
-};
+$('#auser').onchange=function(){UID=this.value||null;var p=$('#apanel');if(!UID){p.classList.add('hide');return}
+api('/api/admin/user/'+UID+'/summary').then(function(d){$('#abal').textContent=money(d.summary.balance);p.classList.remove('hide')})};
 
-$('#logoutBtn').onclick = async () => {
-  try { await api('/api/logout', {method:'POST'}); } catch (e) {}
-  token = ''; me = null;
-  localStorage.removeItem('ci_token');
-  showLanding();
-};
+$('#post').onclick=function(){var m=$('#pmsg');m.textContent='';if(!UID){m.textContent='Pick a user first.';return}
+api('/api/admin/trade',{method:'POST',body:JSON.stringify({user_id:parseInt(UID),day:$('#dday').value,balance:parseFloat($('#db').value),pnl:parseFloat($('#dp').value),note:$('#dn').value.trim()})})
+.then(function(){m.textContent='✅ Published.';$('#db').value='';$('#dp').value='';$('#dn').value='';loadAdmin()})
+.catch(function(e){m.textContent='❌ '+e.message})};
 
-/* ---------------- user: deposit/withdraw ---------------- */
-$('#reqBtn').onclick = async () => {
-  const msg = $('#reqMsg');
-  msg.textContent = '';
-  try {
-    const d = await api('/api/request', {method:'POST', body: JSON.stringify({
-      kind: $('#kind').value,
-      amount: parseFloat($('#amount').value),
-      address: $('#address').value.trim()
-    })});
-    msg.textContent = `✅ Request #${d.id} submitted — pending approval.`;
-    $('#amount').value = ''; $('#address').value = '';
-    refreshMe();
-  } catch (e) { msg.textContent = '❌ ' + e.message; }
-};
-
-/* ---------------- admin ---------------- */
-$('#adminBtn').onclick = () => {
-  const c = $('#adminView');
-  c.classList.toggle('hidden');
-  if (!c.classList.contains('hidden')) { loadAdmin(); c.scrollIntoView({behavior:'smooth'}); }
-};
-
-async function loadAdmin() {
-  try {
-    const u = await api('/api/admin/users');
-    const opts = u.users.map(x =>
-      `<option value="${x.id}">${esc(x.email)}${x.is_admin ? ' (admin)' : ''} — ${money(x.balance)}</option>`
-    ).join('');
-    $('#adminUserSelect').innerHTML = '<option value="">— select a user —</option>' + opts;
-
-    $('#adminUsers').innerHTML = `<div class="scroll"><table>
-      <thead><tr><th>#</th><th>Email</th><th>Role</th><th>Balance</th><th>Days</th></tr></thead>
-      <tbody>${u.users.map(x => `<tr><td>${x.id}</td><td>${esc(x.email)}</td>
-        <td>${x.is_admin ? 'admin' : 'user'}</td>
-        <td>${money(x.balance)}</td><td>${x.days}</td></tr>`).join('')}</tbody></table></div>`;
-
-    const r = await api('/api/admin/requests');
-    const renderReqs = (list, withActions) => list.length
-      ? `<div class="scroll"><table><thead><tr><th>#</th><th>User</th><th>Type</th><th>Amount</th><th>Address</th><th></th></tr></thead>
-         <tbody>${list.map(q => `<tr>
-           <td>${q.id}</td><td class="sub">${esc(q.email)}</td><td>${esc(q.kind)}</td>
-           <td>${money(q.amount)}</td><td class="sub">${esc(q.address || '—')}</td>
-           <td>${withActions
-             ? `<button class="sm ok" data-ok="${q.id}">✓</button>
-                <button class="sm no" data-no="${q.id}">✕</button>`
-             : `<span class="pill ${q.status}">${q.status}</span>`}</td>
-         </tr>`).join('')}</tbody></table></div>`
-      : '<div class="sub">Nothing pending.</div>';
-
-    $('#adminReqs').innerHTML = renderReqs(r.pending, true) +
-      (r.recent.length ? '<div class="lbl" style="margin:14px 0 8px">Recently decided</div>' + renderReqs(r.recent, false) : '');
-  } catch (e) {
-    $('#adminReqs').innerHTML = '<div class="sub">' + esc(e.message) + '</div>';
-  }
-}
-
-$('#adminUserSelect').onchange = async (e) => {
-  selectedUserId = e.target.value || null;
-  const panel = $('#adminUserPanel');
-  if (!selectedUserId) { panel.classList.add('hidden'); return; }
-  await loadAdminUser(selectedUserId);
-  panel.classList.remove('hidden');
-};
-
-async function loadAdminUser(uid) {
-  const d = await api('/api/admin/user/' + uid + '/summary');
-  $('#adminUserEmail').textContent = d.user.email;
-  $('#adminUserBal').textContent = money(d.summary.balance);
-  $('#adminUserMeta').textContent = d.summary.days + ' days · Win rate ' +
-    (d.summary.days ? Math.round(d.summary.wins / d.summary.days * 100) + '%' : '—');
-
-  $('#adminUserHist').innerHTML = d.summary.history.length
-    ? d.summary.history.map(h => `<tr>
-        <td>${esc(h.day)}</td><td>${money(h.end_balance)}</td>
-        <td class="${cls(h.pnl)}">${signed(h.pnl)}</td>
-        <td><button class="sm danger" data-del="${esc(h.day)}" data-uid="${uid}">✕</button></td>
-      </tr>`).join('')
-    : '<tr><td colspan="4" class="sub">No entries.</td></tr>';
-}
-
-$('#postBtn').onclick = async () => {
-  const msg = $('#postMsg');
-  msg.textContent = '';
-  if (!selectedUserId) { msg.textContent = 'Select a user first.'; return; }
-  try {
-    await api('/api/admin/trade', {method:'POST', body: JSON.stringify({
-      user_id: parseInt(selectedUserId),
-      day: $('#day').value,
-      balance: parseFloat($('#endBal').value),
-      pnl: parseFloat($('#pnl').value),
-      note: $('#note').value.trim()
-    })});
-    msg.textContent = '✅ Published.';
-    $('#endBal').value = ''; $('#pnl').value = ''; $('#note').value = '';
-    await loadAdminUser(selectedUserId);
-    await loadAdmin();
-    if (parseInt(selectedUserId) === me.id) loadSummary();
-  } catch (e) { msg.textContent = '❌ ' + e.message; }
-};
-
-document.addEventListener('click', async e => {
-  const el = e.target.closest('[data-ok],[data-no],[data-del]');
-  if (!el) return;
-  try {
-    if (el.dataset.ok) await api('/api/admin/decide', {method:'POST', body: JSON.stringify({id:+el.dataset.ok, status:'approved'})});
-    if (el.dataset.no) await api('/api/admin/decide', {method:'POST', body: JSON.stringify({id:+el.dataset.no, status:'rejected'})});
-    if (el.dataset.del) {
-      if (!confirm('Delete ' + el.dataset.del + ' for this user?')) return;
-      await api('/api/admin/trade/
-' + el.dataset.uid + '/' + el.dataset.del, {method:'DELETE'});
-      await loadAdminUser(el.dataset.uid);
-      await loadAdmin();
-    }
-    await loadAdmin();
-  } catch (err) { alert(err.message); }
-});
-
-/* boot */
-(async () => {
-  if (!localStorage.getItem('ci_token') && !document.querySelector('#day').value)
-    document.querySelector('#day').value = new Date().toISOString().slice(0,10);
-  if (token) {
-    try {
-      await refreshMe();
-      await loadSummary();
-      showUser();
-      if (me.is_admin) loadAdmin();
-    } catch {
-      token = ''; me = null; localStorage.removeItem('ci_token');
-      showLanding();
-    }
-  } else {
-    showLanding();
-  }
-})();
-</script>
-</body>
-</html>
-' + el.dataset.uid + '/' + el.dataset.del, {method:'DELETE'});
-      await loadAdminUser(el.dataset.uid);
-      await loadAdmin();
-    }
-    await loadAdmin();
-  } catch (err) { alert(err.message); }
-});
-
-/* boot */
-(async () => {
-  if (!localStorage.getItem('ci_token') && !document.querySelector('#day').value)
-    document.querySelector('#day').value = new Date().toISOString().slice(0,10);
-  if (token) {
-    try {
-      await refreshMe();
-      await loadSummary();
-      showUser();
-      if (me.is_admin) loadAdmin();
-    } catch {
-      token = ''; me = null; localStorage.removeItem('ci_token');
-      showLanding();
-    }
-  } else {
-    showLanding();
-  }
-})();
-</script>
-</body>
-</html>
+$('#dday').value=new Date().toISOString().slice(0,10);
+if(T){loadMe().then(loadSummary).then(function(){showUser();if(ME.is_admin)loadAdmin()}).catch(function(){T='';localStorage.removeItem('tok');showLanding()})}else{showLanding()}
+</script></body></html>
